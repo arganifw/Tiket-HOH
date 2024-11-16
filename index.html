@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket Konser</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@800&display=swap" rel="stylesheet">
+
+  <style>
+    /* STYLE.CSS */
+    @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Geologica", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #6e0e0e;
+  color: #f0f0f0;
+}
+
+header {
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  transition: top 0.3s ease;
+}
+
+header .logo img {
+  width: 85px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav li {
+  margin-right: 20px;
+}
+
+header nav li a {
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+header nav li a:hover {
+  color: #ff9f00;
+}
+
+header .logo {
+  display: flex;
+  align-items: flex-start; /* Mengubah posisi teks lebih ke atas */
+  gap: 5px; /* Jarak antara gambar logo dan tulisan */
+}
+
+header .logo img {
+  width: 88px;
+  margin-top: -9px; 
+}
+
+header .logo-text {
+  font-size: 1.5rem; /* Ukuran teks logo */
+  line-height: 3; /* Mengatur tinggi garis agar lebih rapat */
+  margin-top: 8px; /* Mengatur margin atas */
+}
+
+
+main {
+  padding: 2rem;
+}
+
+#home {
+  margin-top: 70px;
+  text-align: center;
+  background-image: url("img/Bener.png");
+  background-size: cover;
+  background-position: center;
+  color: #f0f0f0;
+  padding: 4rem 0;
+  font-family: "Geologica", sans-serif;
+  border-radius: 12px;
+  border: 2px solid #6e0e0e;
+  box-shadow: 10px 20px 50px rgba(0, 0, 0, 10);
+}
+
+#home .intro h1 {
+  font-size: 6rem;
+  color: #ff9f00;
+  /* margin-bottom: 1rem; */
+  text-shadow: 5px 2px 4px rgb(110, 14, 14);
+}
+
+#home .intro p {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #ff9f00;
+  text-shadow: 5px 2px 4px rgb(110, 14, 14);
+}
+
+#home .artist-home {
+  font-size: 1.5rem;
+  text-shadow: 5px 2px 4px rgb(110, 14, 14);
+  margin-bottom: 1rem;
+}
+
+#home .place-date {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 5px 2px 4px rgb(110, 14, 14);
+  color: #f0f0f0;
+}
+
+#home .button a {
+  display: inline-block;
+  background-color: #ff9f00;
+  color: #f0f0f0;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  font-weight: 1000;
+}
+
+#home .button a:hover {
+  background-color: #ff8c00;
+}
+
+#lineup {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+#lineup h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.artists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 4rem;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #6e0e0e;
+  margin-bottom: 1rem;
+  /* box-shadow: 10px 20px 50px rgba( 0, 0, 0, 10); */
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #f0f0f0;
+}
+
+.card p {
+  font-size: 1.2rem;
+  color: #ff9f00;
+  font-weight: 1000;
+}
+
+#tickets {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+#tickets h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+#tickets button {
+  font-family: "Geologica", sans-serif;
+}
+
+.prices {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+table th {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+table td {
+  text-align: center;
+}
+
+table td button {
+  background-color: #ff9f00;
+  color: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+table td button:hover {
+  background-color: #ff8c00;
+}
+
+
+#about {
+  padding: 2rem 0;
+}
+
+#about h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+#about p {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#contact {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+#contact button {
+  background-color: #ff9f00;
+  color: #f0f0f0;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Geologica", sans-serif;
+}
+
+#contact button:hover {
+  background-color: #ff8c00;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form label,
+form input,
+form textarea,
+form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+form label {
+  text-align: left;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  padding: 0.5rem;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  background: url("img/foother.png") no-repeat center;
+  background-size: cover;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 26, 26, 0.6);
+  z-index: -1;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.3s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+  </style>
+</head>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History Of Heroes</title>
+  <link rel="shortcut icon" href="img/band.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ <header id="header">
+  <div class="logo">
+    <img src="img/band png.png" alt="UKM BAND UHWP">
+    <span class="logo-text">UKM BAND</span>
+  </div>
+  <nav class="nav-links">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#lineup">Line up</a></li>
+      <li><a href="#tickets">Tickets</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+  <main>
+    <section id="home">
+      <div class="intro">
+        <h1>     </h1>
+        <p></p>
+      </div>
+      <div class="artist-home">
+        <p><br>
+      </div>
+      <div class="place-date">
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+    </section>
+    <section id="lineup">
+      <h2>Line up</h2>
+      <div class="artists">
+        <div class="card">
+          <img src="img/zz.jpg" alt="Artist 1">
+          <h3>Zeus</h3>
+          <p></p>
+        </div>
+        <div class="card">
+          <img src="img/padus.jpg" alt="Artist 2">
+          <h3>UKM Padus</h3>
+          <p></p>
+        </div>
+        <div class="card">
+          <img src="img/MESEM FOR PEACE.jpg" alt="Artist 3">
+          <h3>Mesem For Peace</h3>
+          <p></p>
+        </div>
+      </div>
+    </section>
+    <section id="tickets">
+      <h2>Tickets Online</h2>
+      <div class="prices">
+        <table>
+          <thead>
+            <tr>
+              <th>Ticket Type</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>HTM</td>
+            <td>Rp. 15.000,-</td>
+            <td><a id="buy-ticket" href="https://forms.gle/ZvJs5erUf4csQh19A"><button>Buy Now</button></a></td>
+        </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+       HOH (History Of Heroes) adalah acara tahunan UKM Band UHW Perbanas Surabaya sebagai bentuk memperingati Hari Pahlawan. 
+        Acara ini menghadirkan para veteran sebagai narasumber yang berbagi kisah perjuangan, dengan terdapat sesi tanya jawab. 
+        Selain itu, terdapat berbagai penampilan musik dan seni sebagai penghormatan kepada para pahlawan. 
+        Tujuan utama acara ini adalah untuk mengenang jasa pahlawan serta menumbuhkan semangat nasionalisme di kalangan generasi muda.</p>
+     
+  </main>
+  <footer class="footer">
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.youtube.com/user/bandperbanas">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.instagram.com/bandperbanas/?hl=id">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.tiktok.com/@band_uhw_perbanas?_t=8rNmbyelmhZ&_r=1">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a></li>
+    </ul>
+    <p>&copy; 2024 by History Of Heroes. All rights reserved.</p>
+    <p>  Jalan Wonorejo Utara No.16, Wonorejo, Kec. Rungkut, Surabaya, Jawa Timur 60296</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+  <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+  <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" nomodule></script>
+</body>
+
+</html>
+
+  <script>
+    let isHeaderVisible = true;
+const header = document.getElementById("header");
+const headerHeight = header.offsetHeight;
+let prevScrollPos = 0;
+
+// Function to show or hide the header
+function toggleHeader() {
+  if (window.pageYOffset === 0) return; // Check if the header is at the top (position fixed) and do nothing
+
+  if (isHeaderVisible) {
+    // Header is visible, hide it
+    header.style.top = `-${headerHeight}px`;
+  } else {
+    // Header is hidden, show it
+    header.style.top = "0";
+  }
+
+  isHeaderVisible = !isHeaderVisible;
+}
+
+// Event listener to toggle header visibility on scroll
+window.addEventListener("scroll", function () {
+  const currentScrollPos = window.pageYOffset;
+  const scrollUp = prevScrollPos > currentScrollPos;
+
+  if (scrollUp) {
+    // Scroll up, show the header
+    header.style.top = "0";
+  } else {
+    // Scroll down, hide the header
+    header.style.top = `-${headerHeight}px`;
+  }
+
+  prevScrollPos = currentScrollPos;
+});
+
+// Event listener to show or hide the header on click anywhere on the page
+document.addEventListener("click", function (event) {
+  const clickedElement = event.target;
+
+  // Check if the clicked element is inside the header
+  if (!header.contains(clickedElement)) {
+    // Check if the clicked element is the buy or send button
+    if ( clickedElement.id !== "buy-regular"
+      && clickedElement.id !== "buy-vip"
+      && clickedElement.id !== "submitBtn"
+      && clickedElement.id !== "name"
+      && clickedElement.id !== "email"
+      && clickedElement.id !== "message") {
+      // Clicked element is not inside the header or the buttons, toggle header visibility
+      toggleHeader();
+    }
+  }
+
+  // Prevent the event from bubbling up to the window level
+  event.stopPropagation();
+});
+
+// Function to handle smooth scroll to the home section
+function scrollToHome() {
+  const homeSection = document.getElementById("home");
+  const headerOffset = headerHeight + 17; // Adjust this value according to your header height
+  const elementPosition = homeSection.getBoundingClientRect().top;
+  const offsetPosition = elementPosition - headerOffset;
+
+  window.scrollBy({
+    top: offsetPosition,
+    behavior: "smooth"
+  });
+}
+
+// Event listener for the "Home" link
+const homeLink = document.querySelector('a[href="#home"]');
+homeLink.addEventListener("click", function (e) {
+  e.preventDefault();
+  scrollToHome();
+});
+
+// Formsprree Contact Form Submission
+var form = document.getElementById("my-form");
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  var status = document.getElementById("my-form-status");
+  var data = new FormData(event.target);
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      status.innerHTML = "Thanks for your submission!";
+      form.reset();
+      resetContactForm();
+      setTimeout(resetStatusMessage, 3000);
+    } else {
+      response.json().then(data => {
+        if (Object.hasOwn(data, 'errors')) {
+          status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+        } else {
+          status.innerHTML = "Oops! There was a problem submitting your form";
+        }
+      });
+    }
+  }).catch(error => {
+    status.innerHTML = "Oops! There was a problem submitting your form";
+  });
+}
+
+form.addEventListener("submit", handleSubmit);
+
+// Fungsi untuk mereset input form kontak
+function resetContactForm() {
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+  nameInput.value = "";
+  emailInput.value = "";
+  messageInput.value = "";
+}
+
+// Fungsi untuk mengganti innerHTML pesan status menjadi kosong setelah beberapa detik
+function resetStatusMessage() {
+  const status = document.getElementById("my-form-status");
+  status.innerHTML = "";
+}
+  </script>
+</body>
+
+</html>
