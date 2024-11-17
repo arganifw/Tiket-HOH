@@ -41,47 +41,50 @@ header {
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
   z-index: 999;
   transition: top 0.3s ease;
 }
 
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara logo dan menu */
+}
+
 header .logo img {
-  width: 50px;
+  width: 40px; /* Mengurangi ukuran logo */
+  margin-top: 0;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
 }
 
 header nav ul {
-  flex-wrap: wrap;
   list-style: none;
   display: flex;
-  gap: 10px;
+  gap: 15px; /* Jarak antar menu */
 }
 
 header nav li {
-  margin-right: 20px;
+  margin: 0;
 }
 
 header nav li a {
   color: #f0f0f0;
   text-decoration: none;
-  transition: color 0.3s;
   font-weight: bold;
+  font-size: 1rem; /* Ukuran teks menu */
+  padding: 10px; /* Memberikan padding untuk area klik */
+  transition: color 0.3s;
 }
 
 header nav li a:hover {
   color: #ff9f00;
 }
 
-header .logo {
-  display: flex;
-  align-items: flex-start; /* Mengubah posisi teks lebih ke atas */
-  gap: 5px; /* Jarak antara gambar logo dan tulisan */
-}
-
-header .logo img {
-  width: 60px;
-  margin-top: -9px; 
-}
 
 header .logo-text {
   font-size: 1.2rem; /* Ukuran teks logo */
@@ -257,13 +260,13 @@ table td button:hover {
 
 #about h2 {
   font-size: 2vw;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: justify;
 }
 
 #about p {
   text-align: justify;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
